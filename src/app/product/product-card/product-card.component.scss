@@ -1,7 +1,7 @@
 .card-container {
   width: 100%;
 
-  background: #8789f6;
+  background: #d5d5d5;
 
   border-radius: 16px;
   .card-image {
@@ -41,6 +41,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+
+  .card-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 12px;
+
+    .ql {
+      width: 50%;
     }
   }
 }

@@ -1,8 +1,10 @@
-<div class="products-container">
+<div class="products-container" *ngIf="products$ | async as products">
   <h2>Products</h2>
-  <ul class="product-list">
+  <ul class="product-list" *ngIf="products; else empty">
     <li class="product-card" *ngFor="let item of products">
       <app-product-card [product]="item"></app-product-card>
     </li>
   </ul>
+
+  <ng-template #empty> Not Founds </ng-template>
 </div>

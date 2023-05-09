@@ -5,20 +5,17 @@
       <a class="text-lg" [routerLink]="['product', product.id]">
         {{ product.name }}
       </a>
-      <p class="text-lg">Price: {{ product.price }}</p>
+      <p class="text-lg">Price: ${{ product.price }}</p>
     </div>
-    <button class="next" [routerLink]="['product', product.id]">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
-        fill="#000000"
-        viewBox="0 0 256 256"
-      >
-        <path
-          d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"
-        ></path>
-      </svg>
-    </button>
+  </div>
+  <div class="card-bottom">
+    <input
+      [(ngModel)]="quality"
+      class="text-center ql"
+      type="number"
+      name="ql"
+      id=""
+    />
+    <button class="btn" (click)="addToCard(product)">Add to cart</button>
   </div>
 </div>

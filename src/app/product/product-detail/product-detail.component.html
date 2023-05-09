@@ -1,5 +1,13 @@
-<p>product-detail works!</p>
-<a [routerLink]="['']"> Back </a>
-<p *ngIf="product$ | async as product">
-  {{ product | json }}
-</p>
+<div class="product-detail-container">
+  <a [routerLink]="['']">Back</a>
+  <h2>Product Detail</h2>
+
+  <ng-container *ngIf="{ product: product$ | async } as prd">
+    <app-product-card
+      *ngIf="prd.product; else notF"
+      [product]="prd.product"
+    ></app-product-card>
+  </ng-container>
+
+  <ng-template #notF> Product is not existed </ng-template>
+</div>

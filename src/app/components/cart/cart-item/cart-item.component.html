@@ -1,0 +1,16 @@
+<div class="card-item">
+  <img [src]="item.product.url" alt="item" />
+  <div class="item-info">
+    <div class="product">
+      <p>{{ item.product.name }}</p>
+      <p>${{ item.product.price }}</p>
+    </div>
+    <div class="quality">
+      <p>Quality: {{ item.quality }}</p>
+      <p>Total: ${{ item.product.price * item.quality }}</p>
+    </div>
+  </div>
+  <div class="action">
+    <button class="btn" (click)="removeItem.emit()">Remove</button>
+  </div>
+</div>

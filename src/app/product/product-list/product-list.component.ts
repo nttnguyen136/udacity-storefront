@@ -7,7 +7,11 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent {
-  products = this.productService.products;
+  products$ = this.productService.getProducts();
+
+  isCollapsed = true;
+
+  carts = this.productService.carts;
 
   constructor(private productService: ProductService) {}
 }

@@ -1,0 +1,40 @@
+<div class="carts" [class.collapsed]="isCollapsed">
+  <ng-container *ngIf="!isCollapsed">
+    <div class="cart-list">
+      <div class="product" *ngFor="let item of carts; index as index">
+        <app-cart-item
+          [item]="item"
+          (removeItem)="removeItem(index)"
+        ></app-cart-item>
+      </div>
+
+      <div class="empty-cart" *ngIf="carts.length === 0">Cart is empty</div>
+
+      <button *ngIf="carts.length" class="btn remove-all" (click)="removeAll()">
+        Remove All
+      </button>
+    </div>
+    <div class="cart-action">
+      <button class="btn">Check out</button>
+      <p>Total Price: ${{ getTotalPrice() }}</p>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isCollapsed">
+    <img
+      class="icon-button"
+      src="assets/icons/cart-2-svgrepo-com.svg"
+      alt="cart"
+      (click)="isCollapsed = false"
+      *ngIf="isCollapsed"
+    />
+    <div class="cart-total-item">{{ getTotalItem() }}</div>
+  </ng-container>
+
+  <img
+    class="icon-button"
+    src="assets/icons/arrow-down-right-square-svgrepo-com.svg"
+    alt="cart"
+    (click)="isCollapsed = true"
+    *ngIf="!isCollapsed"
+  />
+</div>

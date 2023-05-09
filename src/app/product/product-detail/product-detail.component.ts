@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { Observable, map, mergeMap, of } from 'rxjs';
 import { IProduct } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -11,11 +11,11 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductDetailComponent {
   product$: Observable<IProduct | undefined> = this.activatedRoute.params.pipe(
-    map((params) => {
+    mergeMap((params) => {
       if (params) {
         return this.productService.getProductById(Number(params['id']));
       }
-      return undefined;
+      return of(undefined);
     })
   );
 

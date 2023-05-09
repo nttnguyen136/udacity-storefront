@@ -5,3 +5,8 @@ export interface IProduct {
   url: string;
   description: string;
 }
+
+export interface ICartItem {
+  quality: number;
+  product: IProduct;
+}
