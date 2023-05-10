@@ -1,0 +1,102 @@
+<div class="checkout-container">
+  <ng-container *ngIf="!isSuccesses">
+    <h2>Checkout</h2>
+
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="flex">
+      <div class="checkout-info">
+        <div class="form-group">
+          <h3>1. Personal Information</h3>
+          <div class="flex form-item">
+            <input
+              type="text"
+              placeholder="First Name"
+              class="w-50"
+              formControlName="firstName"
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              class="w-50"
+              formControlName="lastName"
+            />
+          </div>
+          <div class="flex form-item">
+            <input
+              type="text"
+              placeholder="Address"
+              class="w-full"
+              formControlName="address"
+            />
+          </div>
+          <div class="flex form-item">
+            <input
+              type="text"
+              placeholder="Email"
+              class="w-50"
+              formControlName="email"
+            />
+            <input
+              type="text"
+              placeholder="Phone Number"
+              class="w-50"
+              formControlName="phoneNumber"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h3>2. Payment Details</h3>
+          <div class="flex form-item">
+            <input
+              type="text"
+              placeholder="Card Number"
+              class="w-full"
+              formControlName="cardNumber"
+            />
+          </div>
+          <div class="flex form-item">
+            <input
+              type="text"
+              placeholder="Security Code"
+              class="w-50"
+              formControlName="securityCode"
+            />
+            <input
+              type="text"
+              placeholder="Expired Date"
+              class="w-50"
+              formControlName="expiredDate"
+            />
+          </div>
+        </div>
+        <div class="form-action">
+          <button
+            class="btn submit"
+            type="submit"
+            [disabled]="checkoutForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+
+      <div class="product-list">
+        <div class="item" *ngFor="let item of carts; index as index">
+          <app-cart-item
+            [item]="item"
+            (removeItem)="removeItem(index)"
+          ></app-cart-item>
+        </div>
+        <div class="total">
+          <p>Total Price: ${{ getTotalPrice() | number : "1.0-4" }}</p>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+
+  <div class="checkout-success" *ngIf="isSuccesses">
+    <img src="assets/icons/correct-success-tick-svgrepo-com.svg" alt="" />
+    <h2>THANK YOU FOR YOUR PURCHASE</h2>
+    <button class="btn" [routerLink]="['']">Continue Shopping</button>
+  </div>
+</div>

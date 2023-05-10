@@ -7,7 +7,7 @@
     </div>
     <div class="quality">
       <p>Quality: {{ item.quality }}</p>
-      <p>Total: ${{ item.product.price * item.quality }}</p>
+      <p>Total: ${{ item.product.price * item.quality | number : "1.0-4" }}</p>
     </div>
   </div>
   <div class="action">

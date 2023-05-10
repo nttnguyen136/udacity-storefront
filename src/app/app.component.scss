@@ -3,23 +3,33 @@
 }
 
 .toolbar {
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
+
   height: 60px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
   background-color: #1976d2;
   color: white;
   font-weight: 600;
+  z-index: 10;
+
+  padding-inline: 20px;
+
+  a {
+    color: white;
+  }
 }
 
 .content {
   display: flex;
   margin: 82px auto 32px;
   padding: 0 16px;
-  max-width: 960px;
+  max-width: 1024px;
   flex-direction: column;
   align-items: center;
 }
@@ -33,6 +43,12 @@ a:hover {
 
 a:hover {
   color: #125699;
+}
+
+.router a {
+  &:hover {
+    text-shadow: 3px 3px #555555;
+  }
 }
 
 footer {

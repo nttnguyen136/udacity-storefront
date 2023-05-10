@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartModule } from './components/cart/cart.module';
 import { ProductModule } from './product/product.module';
+import { CheckoutModule } from './components/checkout/checkout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import { ProductModule } from './product/product.module';
     AppRoutingModule,
     ProductModule,
     CartModule,
+    CheckoutModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],

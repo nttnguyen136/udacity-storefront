@@ -10,7 +10,15 @@ import { ICartItem, IProduct } from '../models/product.model';
 export class ProductService {
   carts: ICartItem[] = [];
 
-  constructor(private http: HttpClient, private toast: ToastrService) {}
+  SSKEY = 'CART';
+
+  constructor(private http: HttpClient, private toast: ToastrService) {
+    const _cart = window.sessionStorage.getItem(this.SSKEY);
+
+    if (_cart) {
+      this.carts = JSON.parse(_cart);
+    }
+  }
 
   getProducts(): Observable<IProduct[]> {
     return this.http
@@ -26,6 +34,17 @@ export class ProductService {
     );
   }
 
+  getTotalPrice() {
+    return this.carts.reduce((pre, cur) => {
+      let total = cur.quality * cur.product.price;
+      return total + pre;
+    }, 0);
+  }
+
+  syncSessionStorage() {
+    window.sessionStorage.setItem(this.SSKEY, JSON.stringify(this.carts));
+  }
+
   addToCart(cartItem: ICartItem) {
     const ind = this.carts.findIndex(
       (item) => item.product.id === cartItem.product.id
@@ -35,6 +54,7 @@ export class ProductService {
     } else {
       this.carts.push(cartItem);
     }
+    this.syncSessionStorage();
 
     this.toast.success(
       `Added ${cartItem.quality} ${cartItem.product.name} to cart`
@@ -43,11 +63,14 @@ export class ProductService {
 
   removeFromCart(itemId: number) {
     this.carts.splice(itemId, 1);
+
+    this.syncSessionStorage();
     this.toast.success('Remove success');
   }
 
-  removeAll() {
+  removeAll(message?: string) {
     this.carts.splice(0, this.carts.length);
-    this.toast.success('Remove all success');
+    this.syncSessionStorage();
+    this.toast.success(message || 'Remove all success');
   }
 }

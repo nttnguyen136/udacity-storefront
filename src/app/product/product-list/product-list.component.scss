@@ -2,15 +2,14 @@
   .product-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: 16px;
     list-style-type: none;
 
     position: relative;
 
     .product-card {
-      min-width: 64px;
-      width: 280px;
+      min-width: 240px;
+      width: 30%;
     }
   }
 }

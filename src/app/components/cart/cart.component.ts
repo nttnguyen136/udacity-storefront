@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, map, tap } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -11,23 +13,30 @@ export class CartComponent {
 
   carts = this.productService.carts;
 
-  constructor(private productService: ProductService) {}
+  isHidden$ = this.router.events.pipe(
+    filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+
+    map((e) => e.url === '/checkout'),
+    tap((isHidden) => {
+      if (isHidden) {
+        this.isCollapsed = true;
+      }
+    })
+  );
+
+  constructor(private productService: ProductService, private router: Router) {}
 
   removeItem(index: number) {
     this.productService.removeFromCart(index);
-  }
-
-  getTotalPrice() {
-    return this.carts.reduce((pre, cur) => {
-      let total = cur.quality * cur.product.price;
-      return total + pre;
-    }, 0);
   }
 
   getTotalItem() {
     return this.carts.reduce((pre, cur) => {
       return cur.quality + pre;
     }, 0);
+  }
+  getTotalPrice() {
+    return this.productService.getTotalPrice();
   }
 
   removeAll() {

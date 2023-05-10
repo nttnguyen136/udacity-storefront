@@ -7,7 +7,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+body {
+  margin: 0;
+}
 h1,
 h2,
 h3,
@@ -39,10 +41,32 @@ p {
   }
 }
 
+input {
+  padding: 10px 16px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+
+  &.w {
+    &-50 {
+      width: 50%;
+    }
+
+    &-full {
+      width: 100%;
+    }
+  }
+}
+
 button.btn {
-  padding: 6px 12px;
+  padding: 8px 12px;
   border-radius: 8px;
   border: none;
+
+  height: max-content;
+  margin: auto 8px;
 
   cursor: pointer;
 
@@ -52,7 +76,12 @@ button.btn {
   font-size: 14px;
 
   &:hover {
-    background: rgb(18, 48, 211);
+    background: #1230d3;
+  }
+
+  &[disabled] {
+    background: #999c9f;
+    cursor: not-allowed;
   }
 
   .btn-icon {
@@ -63,4 +92,20 @@ button.btn {
 
 .text-center {
   text-align: center;
+}
+
+.flex {
+  display: flex;
+  gap: 12px;
+}
+.j-center {
+  justify-content: center;
+}
+
+.a-center {
+  align-items: center;
+}
+
+app-checkout {
+  width: 100%;
 }

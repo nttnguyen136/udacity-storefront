@@ -15,6 +15,10 @@
   flex-direction: column;
   justify-content: space-between;
 
+  &.hidden {
+    display: none;
+  }
+
   .cart-list {
     flex-grow: 1;
     max-height: 600px;

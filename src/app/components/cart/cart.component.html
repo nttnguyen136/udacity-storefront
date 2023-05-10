@@ -1,4 +1,8 @@
-<div class="carts" [class.collapsed]="isCollapsed">
+<div
+  class="carts"
+  [class.collapsed]="isCollapsed"
+  [class.hidden]="isHidden$ | async"
+>
   <ng-container *ngIf="!isCollapsed">
     <div class="cart-list">
       <div class="product" *ngFor="let item of carts; index as index">
@@ -15,8 +19,10 @@
       </button>
     </div>
     <div class="cart-action">
-      <button class="btn">Check out</button>
-      <p>Total Price: ${{ getTotalPrice() }}</p>
+      <button class="btn" *ngIf="carts.length" [routerLink]="['checkout']">
+        Check out
+      </button>
+      <p>Total Price: ${{ getTotalPrice() | number : "1.0-4" }}</p>
     </div>
   </ng-container>
   <ng-container *ngIf="isCollapsed">
