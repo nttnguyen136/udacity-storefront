@@ -62,25 +62,28 @@
           </div>
         </div>
         <div class="form-action">
+          <button class="btn" [routerLink]="['']">Continue shopping</button>
           <button
             class="btn submit"
             type="submit"
             [disabled]="checkoutForm.invalid"
           >
-            Submit
+            PURCHASE
           </button>
         </div>
       </div>
 
       <div class="product-list">
-        <div class="item" *ngFor="let item of carts; index as index">
-          <app-cart-item
-            [item]="item"
-            (removeItem)="removeItem(index)"
-          ></app-cart-item>
-        </div>
         <div class="total">
-          <p>Total Price: ${{ getTotalPrice() | number : "1.0-4" }}</p>
+          <p>Total price: ${{ getTotalPrice() | number : "1.0-4" }}</p>
+        </div>
+        <div class="list">
+          <div class="item" *ngFor="let item of carts; index as index">
+            <app-cart-item
+              [item]="item"
+              (removeItem)="removeItem(index)"
+            ></app-cart-item>
+          </div>
         </div>
       </div>
     </form>

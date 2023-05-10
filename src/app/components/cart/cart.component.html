@@ -15,14 +15,14 @@
       <div class="empty-cart" *ngIf="carts.length === 0">Cart is empty</div>
 
       <button *ngIf="carts.length" class="btn remove-all" (click)="removeAll()">
-        Remove All
+        Remove all
       </button>
     </div>
     <div class="cart-action">
       <button class="btn" *ngIf="carts.length" [routerLink]="['checkout']">
         Check out
       </button>
-      <p>Total Price: ${{ getTotalPrice() | number : "1.0-4" }}</p>
+      <p>Total price: ${{ getTotalPrice() | number : "1.0-4" }}</p>
     </div>
   </ng-container>
   <ng-container *ngIf="isCollapsed">

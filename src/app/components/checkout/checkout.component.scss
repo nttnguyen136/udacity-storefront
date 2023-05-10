@@ -20,13 +20,23 @@
   .product-list {
     width: 40%;
     height: 100%;
-  }
 
-  .total {
-    color: darkblue;
-    font-weight: 600;
-    padding: 12px;
-    font-size: 20px;
+    .list {
+      border: 1px dashed white;
+      margin-top: 12px;
+
+      .item:not(:last-child) {
+        border-bottom: 1px dashed gray;
+      }
+    }
+
+    .total {
+      color: darkblue;
+      font-weight: 600;
+      padding: 12px;
+      font-size: 20px;
+      border: 1px dashed gray;
+    }
   }
 
   .checkout-success {
