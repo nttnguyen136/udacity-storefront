@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CartModule } from './components/cart/cart.module';
 import { ProductModule } from './product/product.module';
 import { CheckoutModule } from './components/checkout/checkout.module';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +19,10 @@ import { CheckoutModule } from './components/checkout/checkout.module';
     CheckoutModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
-  providers: [ToastrService],
+  providers: [ToastrService, provideNgxMask()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

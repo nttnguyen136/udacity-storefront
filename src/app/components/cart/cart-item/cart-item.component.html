@@ -2,12 +2,17 @@
   <img [src]="item.product.url" alt="item" />
   <div class="item-info">
     <div class="product">
-      <p>{{ item.product.name }}</p>
+      <p>
+        <b>{{ item.product.name }}</b>
+      </p>
       <p>${{ item.product.price }}</p>
     </div>
     <div class="quality">
-      <p>Quality: {{ item.quality }}</p>
-      <p>Total: ${{ item.product.price * item.quality | number : "1.0-4" }}</p>
+      <p><b>Quality:</b> {{ item.quality }}</p>
+      <p>
+        <b> Total:</b>
+        ${{ item.product.price * item.quality | number : "1.0-4" }}
+      </p>
     </div>
   </div>
   <div class="action">

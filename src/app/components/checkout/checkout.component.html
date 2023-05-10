@@ -8,13 +8,11 @@
           <h3>1. Personal Information</h3>
           <div class="flex form-item">
             <input
-              type="text"
               placeholder="First Name"
               class="w-50"
               formControlName="firstName"
             />
             <input
-              type="text"
               placeholder="Last Name"
               class="w-50"
               formControlName="lastName"
@@ -22,24 +20,18 @@
           </div>
           <div class="flex form-item">
             <input
-              type="text"
               placeholder="Address"
               class="w-full"
               formControlName="address"
             />
           </div>
           <div class="flex form-item">
+            <input placeholder="Email" class="w-50" formControlName="email" />
             <input
-              type="text"
-              placeholder="Email"
-              class="w-50"
-              formControlName="email"
-            />
-            <input
-              type="text"
               placeholder="Phone Number"
               class="w-50"
               formControlName="phoneNumber"
+              mask="+(00)-000-000-000"
             />
           </div>
         </div>
@@ -48,24 +40,24 @@
           <h3>2. Payment Details</h3>
           <div class="flex form-item">
             <input
-              type="text"
               placeholder="Card Number"
               class="w-full"
               formControlName="cardNumber"
+              mask="0000 0000 0000 0000"
             />
           </div>
           <div class="flex form-item">
             <input
-              type="text"
               placeholder="Security Code"
               class="w-50"
               formControlName="securityCode"
+              mask="000"
             />
             <input
-              type="text"
               placeholder="Expired Date"
               class="w-50"
               formControlName="expiredDate"
+              mask="00/00"
             />
           </div>
         </div>
@@ -96,7 +88,7 @@
 
   <div class="checkout-success" *ngIf="isSuccesses">
     <img src="assets/icons/correct-success-tick-svgrepo-com.svg" alt="" />
-    <h2>THANK YOU FOR YOUR PURCHASE</h2>
+    <h2><b>THANK YOU FOR YOUR PURCHASE</b></h2>
     <button class="btn" [routerLink]="['']">Continue Shopping</button>
   </div>
 </div>

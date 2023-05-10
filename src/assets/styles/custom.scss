@@ -58,6 +58,14 @@ input {
       width: 100%;
     }
   }
+
+  &.ng-invalid {
+    border-color: red;
+  }
+
+  &.ng-untouched {
+    border-color: #ccc;
+  }
 }
 
 button.btn {

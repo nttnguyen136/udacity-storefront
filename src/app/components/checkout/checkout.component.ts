@@ -14,11 +14,26 @@ export class CheckoutComponent implements OnInit {
   isSuccesses = false;
 
   checkoutForm: FormGroup = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    address: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(64),
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(64),
+    ]),
+    address: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(255),
+    ]),
     phoneNumber: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
+    ]),
     cardNumber: new FormControl('', [Validators.required]),
     securityCode: new FormControl('', [Validators.required]),
     expiredDate: new FormControl('', [Validators.required]),
