@@ -114,6 +114,14 @@ button.btn {
   align-items: center;
 }
 
+.m {
+  &t-8 {
+    margin-top: 8px;
+  }
+  &t-16 {
+    margin-top: 8px;
+  }
+}
 app-checkout {
   width: 100%;
 }

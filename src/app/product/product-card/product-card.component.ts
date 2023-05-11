@@ -9,8 +9,10 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductCardComponent {
   @Input() product: IProduct | undefined;
+  @Input() showDescription = false;
 
   quality = 1;
+  disableAdd = false;
 
   constructor(private productService: ProductService) {}
 
@@ -19,5 +21,9 @@ export class ProductCardComponent {
       quality: this.quality,
       product: product,
     });
+  }
+
+  qualityChange(value: number) {
+    this.disableAdd = value <= 0;
   }
 }

@@ -5,6 +5,7 @@
   <ng-container *ngIf="{ product: product$ | async } as prd">
     <app-product-card
       *ngIf="prd.product; else notF"
+      [showDescription]="true"
       [product]="prd.product"
     ></app-product-card>
   </ng-container>

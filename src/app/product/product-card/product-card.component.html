@@ -2,21 +2,27 @@
   <div class="card-image"><img [src]="product.url" alt="" /></div>
   <div class="card-content">
     <div class="product-info">
-      <a class="text-lg" [routerLink]="['product', product.id]">
+      <a class="text-lg" [routerLink]="['/product', product.id]">
         {{ product.name }}
       </a>
       <p class="text-lg">Price: ${{ product.price }}</p>
     </div>
+    <p class="text-lg mt-8" *ngIf="showDescription">
+      {{ product.description }}
+    </p>
   </div>
   <div class="card-bottom">
     <input
       [(ngModel)]="quality"
+      (ngModelChange)="qualityChange($event)"
       class="text-center ql"
-      min="1"
+      min="0"
       type="number"
       name="ql"
       id=""
     />
-    <button class="btn" (click)="addToCard(product)">Add to cart</button>
+    <button class="btn" [disabled]="disableAdd" (click)="addToCard(product)">
+      Add to cart
+    </button>
   </div>
 </div>
